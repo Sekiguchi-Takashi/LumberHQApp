@@ -22,7 +22,7 @@ jobs:
           unzip -q gradle-8.9-bin.zip -d "$HOME"
 
       - name: Build debug APK
-        run: "$HOME/gradle-8.9/bin/gradle" assembleDebug --no-daemon
+        run: $HOME/gradle-8.9/bin/gradle assembleDebug --no-daemon
 
       - name: Rename APK
         run: cp app/build/outputs/apk/debug/app-debug.apk LumberHQApp-v1.0-debug.apk
