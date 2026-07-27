@@ -1,0 +1,82 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 板1(上) -->
+    <path
+        android:fillColor="#D2A063"
+        android:pathData="M24,30 L84,30 L84,44 L24,44 Z" />
+    <!-- 板1 木口(切断面) -->
+    <path
+        android:fillColor="#A8763F"
+        android:pathData="M24,30 L33,30 L33,44 L24,44 Z" />
+    <!-- 板1 木目 -->
+    <path
+        android:strokeColor="#A8763F"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.55"
+        android:pathData="M37,34 L80,34" />
+    <path
+        android:strokeColor="#A8763F"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.4"
+        android:pathData="M40,39.5 L76,39.5" />
+
+    <!-- 板2(中) -->
+    <path
+        android:fillColor="#B98449"
+        android:pathData="M24,47 L84,47 L84,61 L24,61 Z" />
+    <path
+        android:fillColor="#8E6231"
+        android:pathData="M24,47 L33,47 L33,61 L24,61 Z" />
+    <path
+        android:strokeColor="#8E6231"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.55"
+        android:pathData="M38,51.5 L78,51.5" />
+    <path
+        android:strokeColor="#8E6231"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.4"
+        android:pathData="M43,56.5 L81,56.5" />
+
+    <!-- 板3(下) -->
+    <path
+        android:fillColor="#9E6B36"
+        android:pathData="M24,64 L84,64 L84,78 L24,78 Z" />
+    <path
+        android:fillColor="#754D26"
+        android:pathData="M24,64 L33,64 L33,78 L24,78 Z" />
+    <path
+        android:strokeColor="#754D26"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.55"
+        android:pathData="M37,68.5 L79,68.5" />
+    <path
+        android:strokeColor="#754D26"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.4"
+        android:pathData="M41,73.5 L75,73.5" />
+
+    <!-- 木口の年輪(板1) -->
+    <path
+        android:strokeColor="#754D26"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.7"
+        android:pathData="M26,44 A6,6 0 0 1 26,32" />
+    <!-- 木口の年輪(板2) -->
+    <path
+        android:strokeColor="#5F3F1F"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.7"
+        android:pathData="M26,61 A6,6 0 0 1 26,49" />
+    <!-- 木口の年輪(板3) -->
+    <path
+        android:strokeColor="#5F3F1F"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.7"
+        android:pathData="M26,78 A6,6 0 0 1 26,66" />
+
+</vector>

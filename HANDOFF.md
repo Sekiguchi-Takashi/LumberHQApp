@@ -1,4 +1,4 @@
-# HANDOFF.md — LumberHQApp(AI材木商HQ)v1.0
+# HANDOFF.md — LumberHQApp(AI材木商HQ)v1.1
 
 ## プロジェクト概要
 「一人 + AI」木材事業(テーブル・板材の仕入→保管→販売)の**本部アプリ**。
@@ -10,7 +10,8 @@
 - 外部依存**ゼロ**(androidx不使用、`android.app.Activity` 直継承)
 - **プログラマティックUIのみ**(XMLレイアウトなし)
 - 署名:コミット済み `app/debug.keystore`(alias: androiddebugkey / pass: android)
-- APK取得:GitHub Actions の Artifacts(`LumberHQApp-v1.0-debug`)
+- APK取得:GitHub Actions の Artifacts(`LumberHQApp-v1.1-debug`)
+- アイコン:アダプティブアイコン(緑背景 #2E6B3E + 積み重ねた木材のベクター)。minSdk 26 のため PNG フォールバック不要
 
 ## ファイル構成
 ```
@@ -34,6 +35,10 @@ LumberHQApp/
     ├── debug.keystore
     └── src/main/
         ├── AndroidManifest.xml
+        ├── res/
+        │   ├── drawable/ic_launcher_foreground.xml   # 木材(板3枚+木口の年輪)
+        │   ├── values/colors.xml                     # ic_launcher_background = #2E6B3E
+        │   └── mipmap-anydpi-v26/ic_launcher.xml     # アダプティブアイコン定義
         └── java/com/appathy/lumberhq/MainActivity.kt  # 全画面・全ツール
 ```
 
@@ -61,9 +66,14 @@ LumberHQApp/
 - 法務・ITはPhase 1では質問回答型。フェーズ移行(統括AI判定)で試行・提案型へ進化。
 - 個体カードが在庫・出品・会計の唯一の情報源(個別法評価)。
 
+## 変更履歴
+- v1.1:アプリアイコンを追加(緑背景+木材)。build.yml のYAML構文エラー修正(v1.0.1相当を統合)。versionCode 2 / versionName 1.1。
+- v1.0:初版。9部門の役割表示+部門ツール9種。
+
 ## 既知の注意点
 - `git init` は必ずプロジェクトフォルダ内で(deploy.sh が冒頭で自フォルダに cd するので、必ず deploy.sh 経由でpushすること)。ホームで init するとトークン露出(GH013)リスク。
 - 旧ドキュメント `DEPT_OUTSOURCE_v1.0.md`(外注管理部)は方針変更により廃止済み。`DEPT_SERVICE_v2.0.md` が後継。リポジトリには含めない。
+- res/ にXMLがあるが、これはアイコン用のdrawable/valuesのみ。**レイアウトXMLは引き続き不使用**(プログラマティックUI厳守)。
 - 配送サイズ判定の区分はあくまで一般的目安。実料金は送料マスタ(サービス調達部の成果物)を正とする。
 
 ## 次の候補(未実装)
