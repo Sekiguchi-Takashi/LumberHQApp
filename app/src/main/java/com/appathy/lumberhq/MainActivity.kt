@@ -9,6 +9,11 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.InputType
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -37,9 +42,12 @@ class MainActivity : Activity() {
     private val panel = Color.parseColor("#FDFBF6")
     private val ai = Color.parseColor("#1F3A5F")
     private val accent = Color.parseColor("#B4451F")
+    private val wood = Color.parseColor("#8E6231")
+    private val green = Color.parseColor("#2E6B3E")
 
     private lateinit var prefs: SharedPreferences
     private var currentDept: Dept? = null
+    private var showingBrand = false
 
     private val depts = listOf(
         Dept("keiei", "経営企画室", "統括AI",
@@ -96,7 +104,10 @@ class MainActivity : Activity() {
     }
 
     override fun onBackPressed() {
-        if (currentDept != null) {
+        if (showingBrand) {
+            showingBrand = false
+            showHome()
+        } else if (currentDept != null) {
             currentDept = null
             showHome()
         } else {
@@ -178,12 +189,39 @@ class MainActivity : Activity() {
 
     private fun num(e: EditText): Double = e.text.toString().toDoubleOrNull() ?: 0.0
 
+    // ---------- ブランド表記 ----------
+    // JO = 木肌 / v = 緑(継手) / AI = 藍
+    private fun wordmark(size: Float): TextView {
+        val s = SpannableString("JOvAI")
+        s.setSpan(ForegroundColorSpan(wood), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s.setSpan(ForegroundColorSpan(green), 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s.setSpan(RelativeSizeSpan(0.68f), 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s.setSpan(ForegroundColorSpan(ai), 3, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s.setSpan(StyleSpan(Typeface.BOLD), 0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        val t = TextView(this)
+        t.text = s
+        t.textSize = size
+        t.letterSpacing = 0.04f
+        return t
+    }
+
     // ---------- ホーム画面 ----------
 
     private fun showHome() {
         val col = rootColumn()
-        col.addView(text("AI材木商HQ", 24f, ink, true))
-        col.addView(text("一人+AI企業 / 木材の仕入・保管・販売 / 全9部門", 12f, sub))
+        col.addView(wordmark(30f))
+        col.addView(text("ジョバイ / 上のAI・木星のAI", 12f, sub))
+        val bizline = text("木材事業本部 — 一人+AI企業 / 仕入・保管・販売 / 全9部門", 12f, sub)
+        bizline.setPadding(0, dp(6), 0, dp(2))
+        col.addView(bizline)
+
+        val brandLink = text("社名について →", 12f, green, true)
+        brandLink.setPadding(0, dp(2), 0, 0)
+        brandLink.setOnClickListener {
+            showingBrand = true
+            showBrand()
+        }
+        col.addView(brandLink)
 
         for (d in depts) {
             val c = card()
@@ -205,9 +243,59 @@ class MainActivity : Activity() {
         setContentView(wrapScroll(col))
     }
 
+    // ---------- 社名画面 ----------
+
+    private fun showBrand() {
+        val col = rootColumn()
+
+        val back = text("← 部門一覧へ", 13f, ai, true)
+        back.setPadding(0, 0, 0, dp(8))
+        back.setOnClickListener {
+            showingBrand = false
+            showHome()
+        }
+        col.addView(back)
+
+        col.addView(wordmark(38f))
+        col.addView(text("ジョバイ", 13f, sub))
+
+        val c1 = card()
+        c1.addView(text("二つの意味", 14f, ink, true))
+        c1.addView(text("① 上(じょう)のAI", 13f, wood, true))
+        c1.addView(text("「上」は上小節(じょうこぶし)など、木材の等級で最上級を指す言葉。最も良い材を選び抜くAI、という宣言。", 13f, sub))
+        val jp = text("② 木星(Jove)のAI", 13f, ai, true)
+        jp.setPadding(0, dp(8), 0, 0)
+        c1.addView(jp)
+        c1.addView(text("Jove は木星、そして木曜日(dies Jovis = 木星の日)の語源。樫は木星の神ユピテルの聖樹であり、木星は拡大と成長を司る星とされる。木・時・成長がひとつに繋がる。", 13f, sub))
+        col.addView(c1)
+
+        val c2 = card()
+        c2.addView(text("小文字の v = 継手(つぎて)", 14f, green, true))
+        c2.addView(text("JO(木)と AI を、真ん中の小さな v が継いでいる。木と木を噛み合わせて繋ぐ日本の木工技法になぞらえた、木とAIを継ぐという意味。vだけを小さく書くのはこのため。", 13f, sub))
+        col.addView(c2)
+
+        val c3 = card()
+        c3.addView(text("表記ルール", 14f, ink, true))
+        c3.addView(text("・正式表記は JOvAI(JO大文字 / v小文字 / AI大文字)", 13f, sub))
+        c3.addView(text("・読みは「ジョバイ」", 13f, sub))
+        c3.addView(text("・JOVAI / Jovai / jovai などの表記は使わない", 13f, sub))
+        c3.addView(text("・色は JO=木肌(#8E6231) / v=緑(#2E6B3E) / AI=藍(#1F3A5F)", 13f, sub))
+        c3.addView(text("・AI は日本語の「藍」にも掛かる。藍色を使うのはこのため。", 13f, sub))
+        col.addView(c3)
+
+        val c4 = card()
+        c4.addView(text("事業", 14f, ink, true))
+        c4.addView(text("木製テーブル・板材の仕入 → 保管 → 販売。管理職はすべてAIで、人は代表ひとり。外注は既存サービスの利用のみ。顧客接点は自社サイトで完結し、リピーターを軸に育てる。", 13f, sub))
+        col.addView(c4)
+
+        col.addView(text("※ 商標(J-PlatPat)・ドメイン・既存社名の確認は法務部の初回タスク", 11f, accent))
+        setContentView(wrapScroll(col))
+    }
+
     // ---------- 部門画面 ----------
 
     private fun showDept(d: Dept) {
+        showingBrand = false
         val col = rootColumn()
 
         val back = text("← 部門一覧へ", 13f, ai, true)

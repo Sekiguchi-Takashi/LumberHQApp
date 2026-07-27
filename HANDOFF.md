@@ -1,7 +1,7 @@
-# HANDOFF.md — LumberHQApp(AI材木商HQ)v1.1
+# HANDOFF.md — LumberHQApp(JOvAI 木材事業本部)v1.2
 
 ## プロジェクト概要
-「一人 + AI」木材事業(テーブル・板材の仕入→保管→販売)の**本部アプリ**。
+社名 **JOvAI**(ジョバイ)。「一人 + AI」木材事業(テーブル・板材の仕入→保管→販売)の**本部アプリ**。
 全9部門の役割定義を閲覧でき、各部門に実務ツールを1つずつ搭載する。
 役割定義書の正本は `docs/` の md ファイル。アプリ内の記述は要約版。
 
@@ -10,7 +10,7 @@
 - 外部依存**ゼロ**(androidx不使用、`android.app.Activity` 直継承)
 - **プログラマティックUIのみ**(XMLレイアウトなし)
 - 署名:コミット済み `app/debug.keystore`(alias: androiddebugkey / pass: android)
-- APK取得:GitHub Actions の Artifacts(`LumberHQApp-v1.1-debug`)
+- APK取得:GitHub Actions の Artifacts(`LumberHQApp-v1.2-debug`)
 - アイコン:アダプティブアイコン(緑背景 #2E6B3E + 積み重ねた木材のベクター)。minSdk 26 のため PNG フォールバック不要
 
 ## ファイル構成
@@ -21,6 +21,7 @@ LumberHQApp/
 ├── settings.gradle / build.gradle
 ├── .github/workflows/build.yml
 ├── docs/                     # ★役割定義書の正本(9部門)
+│   ├── COMPANY_JOvAI_v1.0.md      ★社名・ブランド定義書(表記ルール厳守)
 │   ├── DEPT_STRATEGY_v1.0.md      経営企画室(統括AI)
 │   ├── DEPT_PROCUREMENT_v1.0.md   調達部(仕入判断AI)
 │   ├── DEPT_QW_WAREHOUSE_v1.0.md  品質・倉庫部(品質保管AI)
@@ -43,7 +44,7 @@ LumberHQApp/
 ```
 
 ## アプリ構成(v1.0)
-- ホーム:9部門カード → タップで部門画面
+- ホーム:JOvAIワードマーク +「社名について」→ ブランド画面 / 9部門カード → タップで部門画面
 - 部門画面:役割・主要業務・KPI +「部門ツール」
 - データ保存:SharedPreferences(`lumberhq`)。台帳系は改行区切り文字列、行の長押しで削除。
 
@@ -59,6 +60,13 @@ LumberHQApp/
 | 法務 | 開業チェックリスト(7項目・保存) | check_* |
 | IT | 自動化候補ランキング(年間工数を自動計算) | auto_items |
 
+## 社名・表記ルール(厳守)
+- 正式表記 **JOvAI**(JO大文字 / v小文字 / AI大文字)。読み「ジョバイ」。JOVAI・Jovai 等は使わない。
+- 由来:①上(じょう)=木材の最上等級 + AI ②木星(Jove、木曜の語源、樫はユピテルの聖樹)+ AI。
+- 小文字の v は**継手(つぎて)**=木とAIを継ぐ意。
+- 色:JO=#8E6231(木肌) / v=#2E6B3E(緑) / AI=#1F3A5F(藍。日本語の「藍」に掛かる)。
+- ワードマークは `wordmark(size)` で SpannableString により描画(MainActivity)。
+
 ## 会社設計の要点(全docsに共通)
 - 一人+AI企業。AIは判断・起案、代表が実行(支払・契約・物理作業)。
 - 外注=既存サービスの利用のみ(配送・レンタル倉庫・SaaS)。人の代替外注はしない。
@@ -67,6 +75,7 @@ LumberHQApp/
 - 個体カードが在庫・出品・会計の唯一の情報源(個別法評価)。
 
 ## 変更履歴
+- v1.2:社名 **JOvAI** を正式採用。アプリ名を JOvAI に変更、ホームにワードマーク、ブランド画面(社名の由来・表記ルール)を追加。docs に COMPANY_JOvAI_v1.0.md を追加し、全部門定義書に社名を明記。
 - v1.1:アプリアイコンを追加(緑背景+木材)。build.yml のYAML構文エラー修正(v1.0.1相当を統合)。versionCode 2 / versionName 1.1。
 - v1.0:初版。9部門の役割表示+部門ツール9種。
 
@@ -77,6 +86,7 @@ LumberHQApp/
 - 配送サイズ判定の区分はあくまで一般的目安。実料金は送料マスタ(サービス調達部の成果物)を正とする。
 
 ## 次の候補(未実装)
+- 商標(J-PlatPat)・ドメイン確認 → 法務部の初回タスク
 - 個体カードのQR生成・ステータス(在庫/出品中/受注済/出荷済)管理
 - docs/ の md をアプリ内で直接閲覧(assetsに同梱)
 - 統合ブリーフ画面(各ツールのデータを1画面に集約)
