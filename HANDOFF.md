@@ -1,4 +1,4 @@
-# HANDOFF.md — LumberHQApp(JOvAI 木材事業本部)v1.2
+# HANDOFF.md — LumberHQApp(JOvAI 木材事業本部)v1.3
 
 ## プロジェクト概要
 社名 **JOvAI**(ジョバイ)。「一人 + AI」木材事業(テーブル・板材の仕入→保管→販売)の**本部アプリ**。
@@ -10,7 +10,7 @@
 - 外部依存**ゼロ**(androidx不使用、`android.app.Activity` 直継承)
 - **プログラマティックUIのみ**(XMLレイアウトなし)
 - 署名:コミット済み `app/debug.keystore`(alias: androiddebugkey / pass: android)
-- APK取得:GitHub Actions の Artifacts(`LumberHQApp-v1.2-debug`)
+- APK取得:GitHub Actions の Artifacts(`LumberHQApp-v1.3-debug`)
 - アイコン:アダプティブアイコン(緑背景 #2E6B3E + 積み重ねた木材のベクター)。minSdk 26 のため PNG フォールバック不要
 
 ## ファイル構成
@@ -23,14 +23,14 @@ LumberHQApp/
 ├── docs/                     # ★役割定義書の正本(9部門)
 │   ├── COMPANY_JOvAI_v1.0.md      ★社名・ブランド定義書(表記ルール厳守)
 │   ├── DEPT_STRATEGY_v1.0.md      経営企画室(統括AI)
-│   ├── DEPT_PROCUREMENT_v1.0.md   調達部(仕入判断AI)
-│   ├── DEPT_QW_WAREHOUSE_v1.0.md  品質・倉庫部(品質保管AI)
-│   ├── DEPT_SALES_LOGI_v1.1.md    販売・物流部(販売物流AI)
-│   ├── DEPT_CUSTOMER_v1.0.md      顧客接点部(顧客接点AI)
+│   ├── DEPT_PROCUREMENT_v1.0.md   仕入部(仕入判断AI)
+│   ├── DEPT_QW_WAREHOUSE_v1.0.md  倉庫部(品質保管AI)
+│   ├── DEPT_SALES_LOGI_v1.1.md    販売部(販売物流AI)
+│   ├── DEPT_CUSTOMER_v1.0.md      マーケティング部(マーケティングAI)
 │   ├── DEPT_FINANCE_v1.0.md       経理・財務部(会計AI)
-│   ├── DEPT_SERVICE_v2.0.md       サービス調達部(旧・外注管理部)
-│   ├── DEPT_LEGAL_v1.0.md         法務・コンプライアンス部(質問回答型)
-│   └── DEPT_IT_v1.0.md            IT・自動化推進部(質問回答型)
+│   ├── DEPT_SERVICE_v2.0.md       外部サービス部(旧・外注管理部)
+│   ├── DEPT_LEGAL_v1.0.md         法務チェック部(質問回答型)
+│   └── DEPT_IT_v1.0.md            AI部(質問回答型)
 └── app/
     ├── build.gradle
     ├── debug.keystore
@@ -51,12 +51,12 @@ LumberHQApp/
 | 部門 | ツール | prefsキー |
 |---|---|---|
 | 経営企画室 | 代表時間トラッカー(週次予算 vs 実績) | time_entries / time_budget |
-| 調達部 | 仕入上限額 計算機(売価逆算) | — |
-| 品質・倉庫部 | 個体カード台帳 簡易版(K-0001自動採番) | kotai / kotai_seq |
-| 販売・物流部 | 配送サイズ判定(三辺合計+重量) | — |
-| 顧客接点部 | 返信テンプレ5種(タップでコピー) | — |
+| 仕入部 | 仕入上限額 計算機(売価逆算) | — |
+| 倉庫部 | 個体カード台帳 簡易版(K-0001自動採番) | kotai / kotai_seq |
+| 販売部 | 配送サイズ判定(三辺合計+重量) | — |
+| マーケティング部 | 返信テンプレ5種(タップでコピー) | — |
 | 経理・財務部 | 実質粗利 計算機 | — |
-| サービス調達部 | サブスク台帳(月額合計・年換算) | subs |
+| 外部サービス部 | サブスク台帳(月額合計・年換算) | subs |
 | 法務 | 開業チェックリスト(7項目・保存) | check_* |
 | IT | 自動化候補ランキング(年間工数を自動計算) | auto_items |
 
@@ -75,15 +75,31 @@ LumberHQApp/
 - 個体カードが在庫・出品・会計の唯一の情報源(個別法評価)。
 
 ## 変更履歴
+- v1.3:部門名を変更(旧→新):顧客接点部→**マーケティング部** / 販売・物流部→**販売部** / 品質・倉庫部→**倉庫部** / 調達部→**仕入部** / サービス調達部→**外部サービス部** / 法務・コンプライアンス部→**法務チェック部** / IT・自動化推進部→**AI部**。経営企画室・経理・財務部は変更なし。あわせて管理職名を 顧客接点AI→マーケティングAI、サービス調達AI→外部サービスAI に変更。
 - v1.2:社名 **JOvAI** を正式採用。アプリ名を JOvAI に変更、ホームにワードマーク、ブランド画面(社名の由来・表記ルール)を追加。docs に COMPANY_JOvAI_v1.0.md を追加し、全部門定義書に社名を明記。
 - v1.1:アプリアイコンを追加(緑背景+木材)。build.yml のYAML構文エラー修正(v1.0.1相当を統合)。versionCode 2 / versionName 1.1。
 - v1.0:初版。9部門の役割表示+部門ツール9種。
+
+## 部門IDとファイル名の対応(重要)
+内部ID(SharedPreferencesキー・`when(d.id)` 分岐)と docs のファイル名は、**部門名を変えても据え置き**。保存データの互換とdiff肥大の回避のため。
+
+| 内部ID | 現在の部門名 | 定義書ファイル |
+|---|---|---|
+| keiei | 経営企画室 | DEPT_STRATEGY_v1.0.md |
+| chotatsu | 仕入部 | DEPT_PROCUREMENT_v1.0.md |
+| kenpin | 倉庫部 | DEPT_QW_WAREHOUSE_v1.0.md |
+| hanbai | 販売部 | DEPT_SALES_LOGI_v1.1.md |
+| marketing | マーケティング部 | DEPT_CUSTOMER_v1.0.md |
+| keiri | 経理・財務部 | DEPT_FINANCE_v1.0.md |
+| jinji | 外部サービス部 | DEPT_SERVICE_v2.0.md |
+| homu | 法務チェック部 | DEPT_LEGAL_v1.0.md |
+| it | AI部 | DEPT_IT_v1.0.md |
 
 ## 既知の注意点
 - `git init` は必ずプロジェクトフォルダ内で(deploy.sh が冒頭で自フォルダに cd するので、必ず deploy.sh 経由でpushすること)。ホームで init するとトークン露出(GH013)リスク。
 - 旧ドキュメント `DEPT_OUTSOURCE_v1.0.md`(外注管理部)は方針変更により廃止済み。`DEPT_SERVICE_v2.0.md` が後継。リポジトリには含めない。
 - res/ にXMLがあるが、これはアイコン用のdrawable/valuesのみ。**レイアウトXMLは引き続き不使用**(プログラマティックUI厳守)。
-- 配送サイズ判定の区分はあくまで一般的目安。実料金は送料マスタ(サービス調達部の成果物)を正とする。
+- 配送サイズ判定の区分はあくまで一般的目安。実料金は送料マスタ(外部サービス部の成果物)を正とする。
 
 ## 次の候補(未実装)
 - 商標(J-PlatPat)・ドメイン確認 → 法務部の初回タスク
