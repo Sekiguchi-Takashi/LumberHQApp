@@ -1,82 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- 板1(上) -->
+    <!-- 遠景の緑 -->
     <path
-        android:fillColor="#D2A063"
-        android:pathData="M24,30 L84,30 L84,44 L24,44 Z" />
-    <!-- 板1 木口(切断面) -->
-    <path
-        android:fillColor="#A8763F"
-        android:pathData="M24,30 L33,30 L33,44 L24,44 Z" />
-    <!-- 板1 木目 -->
-    <path
-        android:strokeColor="#A8763F"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.55"
-        android:pathData="M37,34 L80,34" />
-    <path
-        android:strokeColor="#A8763F"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.4"
-        android:pathData="M40,39.5 L76,39.5" />
+        android:fillColor="#4E7F52"
+        android:pathData="M38,50 L70,50 L70,42 L62,38 L46,38 L38,42 Z" />
 
-    <!-- 板2(中) -->
+    <!-- 石畳の道(奥へ狭まる) -->
     <path
-        android:fillColor="#B98449"
-        android:pathData="M24,47 L84,47 L84,61 L24,61 Z" />
+        android:fillColor="#EDDFC0"
+        android:pathData="M38,88 L70,88 L61,44 L47,44 Z" />
+    <!-- 石畳の目地 -->
+    <path
+        android:strokeColor="#C9B285"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.7"
+        android:pathData="M41,80 L67,80" />
+    <path
+        android:strokeColor="#C9B285"
+        android:strokeWidth="0.8"
+        android:strokeAlpha="0.6"
+        android:pathData="M43,70 L65,70" />
+    <path
+        android:strokeColor="#C9B285"
+        android:strokeWidth="0.7"
+        android:strokeAlpha="0.5"
+        android:pathData="M45,61 L63,61" />
+    <path
+        android:strokeColor="#C9B285"
+        android:strokeWidth="0.6"
+        android:strokeAlpha="0.4"
+        android:pathData="M46,53 L62,53" />
+
+    <!-- 鳥居 -->
+    <path
+        android:fillColor="#B4451F"
+        android:pathData="M45,35 L63,35 L63,37.6 L45,37.6 Z" />
+    <path
+        android:fillColor="#B4451F"
+        android:pathData="M47,39.6 L61,39.6 L61,41.2 L47,41.2 Z" />
+    <path
+        android:fillColor="#B4451F"
+        android:pathData="M48.4,37.6 L50.8,37.6 L50.2,48 L47.6,48 Z" />
+    <path
+        android:fillColor="#B4451F"
+        android:pathData="M57.2,37.6 L59.6,37.6 L60.4,48 L57.8,48 Z" />
+
+    <!-- 左の町家 -->
+    <path
+        android:fillColor="#7A5228"
+        android:pathData="M16,88 L16,36 L46,44 L46,88 Z" />
+    <path
+        android:fillColor="#4A3B2E"
+        android:pathData="M12,36 L18,27 L50,37 L46,45 Z" />
+    <!-- 左 暖簾(藍) -->
+    <path
+        android:fillColor="#2E4A73"
+        android:pathData="M19,48 L44,55 L44,63 L19,56 Z" />
+    <!-- 左 格子 -->
+    <path
+        android:strokeColor="#C79A5E"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.55"
+        android:pathData="M22,66 L22,88" />
+    <path
+        android:strokeColor="#C79A5E"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.55"
+        android:pathData="M27,67 L27,88" />
+    <path
+        android:strokeColor="#C79A5E"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.55"
+        android:pathData="M32,68 L32,88" />
+    <path
+        android:strokeColor="#C79A5E"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.55"
+        android:pathData="M37,69 L37,88" />
+    <path
+        android:strokeColor="#C79A5E"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.55"
+        android:pathData="M42,70 L42,88" />
+
+    <!-- 右の町家 -->
     <path
         android:fillColor="#8E6231"
-        android:pathData="M24,47 L33,47 L33,61 L24,61 Z" />
+        android:pathData="M92,88 L92,36 L62,44 L62,88 Z" />
     <path
-        android:strokeColor="#8E6231"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.55"
-        android:pathData="M38,51.5 L78,51.5" />
+        android:fillColor="#4A3B2E"
+        android:pathData="M96,36 L90,27 L58,37 L62,45 Z" />
+    <!-- 右 暖簾(藍) -->
     <path
-        android:strokeColor="#8E6231"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.4"
-        android:pathData="M43,56.5 L81,56.5" />
+        android:fillColor="#2E4A73"
+        android:pathData="M89,48 L64,55 L64,63 L89,56 Z" />
+    <!-- 右 格子 -->
+    <path
+        android:strokeColor="#D8AE74"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.5"
+        android:pathData="M86,66 L86,88" />
+    <path
+        android:strokeColor="#D8AE74"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.5"
+        android:pathData="M81,67 L81,88" />
+    <path
+        android:strokeColor="#D8AE74"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.5"
+        android:pathData="M76,68 L76,88" />
+    <path
+        android:strokeColor="#D8AE74"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.5"
+        android:pathData="M71,69 L71,88" />
+    <path
+        android:strokeColor="#D8AE74"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.5"
+        android:pathData="M66,70 L66,88" />
 
-    <!-- 板3(下) -->
+    <!-- 桜(左上) -->
     <path
-        android:fillColor="#9E6B36"
-        android:pathData="M24,64 L84,64 L84,78 L24,78 Z" />
+        android:fillColor="#F0AEC4"
+        android:pathData="M18,18 m-9,0 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 Z" />
     <path
-        android:fillColor="#754D26"
-        android:pathData="M24,64 L33,64 L33,78 L24,78 Z" />
+        android:fillColor="#F7C6D6"
+        android:pathData="M29,13 m-6,0 a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0 Z" />
     <path
-        android:strokeColor="#754D26"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.55"
-        android:pathData="M37,68.5 L79,68.5" />
-    <path
-        android:strokeColor="#754D26"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.4"
-        android:pathData="M41,73.5 L75,73.5" />
+        android:fillColor="#E896B2"
+        android:pathData="M27,25 m-5.5,0 a5.5,5.5 0 1,0 11,0 a5.5,5.5 0 1,0 -11,0 Z" />
 
-    <!-- 木口の年輪(板1) -->
+    <!-- 桜(右上) -->
     <path
-        android:strokeColor="#754D26"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.7"
-        android:pathData="M26,44 A6,6 0 0 1 26,32" />
-    <!-- 木口の年輪(板2) -->
+        android:fillColor="#F0AEC4"
+        android:pathData="M90,17 m-9,0 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 Z" />
     <path
-        android:strokeColor="#5F3F1F"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.7"
-        android:pathData="M26,61 A6,6 0 0 1 26,49" />
-    <!-- 木口の年輪(板3) -->
+        android:fillColor="#F7C6D6"
+        android:pathData="M78,14 m-6,0 a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0 Z" />
     <path
-        android:strokeColor="#5F3F1F"
-        android:strokeWidth="1"
-        android:strokeAlpha="0.7"
-        android:pathData="M26,78 A6,6 0 0 1 26,66" />
+        android:fillColor="#E896B2"
+        android:pathData="M80,25 m-5.5,0 a5.5,5.5 0 1,0 11,0 a5.5,5.5 0 1,0 -11,0 Z" />
+
+    <!-- 舞う花びら -->
+    <path
+        android:fillColor="#F7C6D6"
+        android:pathData="M54,30 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0 Z" />
+    <path
+        android:fillColor="#F7C6D6"
+        android:fillAlpha="0.85"
+        android:pathData="M67,62 m-1.8,0 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0 Z" />
+    <path
+        android:fillColor="#F7C6D6"
+        android:fillAlpha="0.85"
+        android:pathData="M41,74 m-1.8,0 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0 Z" />
+    <path
+        android:fillColor="#F7C6D6"
+        android:fillAlpha="0.7"
+        android:pathData="M57,82 m-1.6,0 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" />
 
 </vector>
